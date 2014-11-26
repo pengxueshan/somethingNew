@@ -5,7 +5,7 @@ function imgAni(c){
 		xNum : '',//图片水平放的单元数
 		yNum : '',//图片垂直放的单元数
 		imgWidth : '',//单元宽度
-		imgHeight : ''//单元宽度
+		imgHeight : ''//单元高度
 	};
 	var config = {};
 	var xpos = 0;
@@ -47,6 +47,6 @@ var runHose = imgAni({
 	xNum : '3',//图片水平放的单元数
 	yNum : '2',//图片垂直放的单元数
 	imgWidth : '200',//单元宽度
-	imgHeight : '200'//单元宽度
+	imgHeight : '200'//单元高度
 });
 runHose.run();
