@@ -1,7 +1,7 @@
 function slider(c){
 	var c = c || {};
 	var defaultConfig = {
-		slideId: '#slider', //轮播容器id
+		slideId: '#slider', //轮播容器id，也可以传入其他选择器
 		itemNum: 0, //轮播图片数
 		itemTime: 300, //轮播一张的时间
 		waitTime: 3000, //轮播一次等待时间
