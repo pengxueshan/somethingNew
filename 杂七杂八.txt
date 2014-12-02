@@ -1,0 +1,158 @@
+﻿去掉超链接点击后的虚线框：a:active,a:focus{outline:none;blr:expression(this.onFocus=this.blur());}blr可以為任意字符;
+
+ie6下设置png透明度图片：
+*html xxx{background-image:none;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale,src="../images/xxx.png");}
+或者xxx{_background:none;_filter:progid:DXImagesTransform.Microsoft.AlphaImagesLoader(enable=true,sizingMethod=scale,src="images/xxx/png");}
+enable=true表示激活滤镜，sizingMethod=scale表示图片自适应容器大小(crop表示裁剪图片适应容器大小，image表示调整容器大小适应图片尺寸);
+
+ie6下元素设置了relative，父元素设置overflow:hidden，这时子元素超出的部分不会隐藏，要将父元素也设置为relative;position为relative或者absolute的元素会拥有z-index属性
+
+ie6下块级元素要设置宽度，在js中click，mouseover等事件才会生效，否则事件只会在元素可见部分(如：元素内部的字符)上生效;
+
+清除浮动:.clear:after{content:".";display:block;clear:both;height:0px;visibility:hidden;}.clear{zoom:1;}
+
+a标签中有href属性时，就是一个超链接，有name属性时就是一个锚点
+
+表格<table>中有thead，tfoot，tbody他们在table标签中书写时的顺序是thead,tfoot,tbody;
+
+特殊字符转义：< &lt; > &gt; & &amp; ' &apos; " &quot;
+
+text-overflow:clip|ellipsis;clip表示不带省略号的裁剪，ellipsis表示带省略号的裁剪，ellipsis不兼容火狐。text-overflow属性仅是注解，当文本溢出时是否显示省略标记。并不具备其它的样式属性定义。要实现溢出时产生省略号的效果还须定义：强制文本在一行内显示（white-space:nowrap）及溢出内容为隐藏（overflow:hidden），只有这样才能实现溢出文本显示省略号的效果。
+
+ie6下面对于这样的css声明无效：a:hover span{...}，
+解决办法：多加一条样式，a:hover{...}，但样式中须设置以下属性才会有效：width，positon，background，text-decoration，font-size，font-weight，font-family，border，float，display，font-style，margin，padding，text-align，overflow，text-transform，text-indent，z-index，vertical-align。
+
+选择符前缀"*"ie6识别，"*+"ie7识别。样式属性前缀"_"ie6识别，"*"ie6和7识别。
+
+ie6下盒子高度不会小于字体的大小，设置高度也不会起作用，要设置盒子高度，要将字体大小调小或者设盒子overflow:hidden。
+
+CSS贴在底部的布局
+http://www.cssstickyfooter.com
+
+html, body, #wrap {height: 100%;}
+body > #wrap {height: auto; min-height: 100%;}
+#main {padding-bottom: 150px;} /* 必须使用和footer相同的高度 */
+#footer {position: relative;
+margin-top: -150px; /* footer高度的负值 */
+height: 150px;
+clear:both;}
+兼容性Hack：
+.clearfix:after {content:".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+<body>
+<div id="wrap">
+	<div id="main"></div>
+</div>
+<div id="footer"></div>
+</body>
+
+只有当一个字体名中有一个或多个空格，或者如果字体名中包含#、$之类的符号，才需要在font-family声明中加引号。如果没有引号，浏览器可能忽略这个特定的字体名。还有一种加引号的情况：就是关键字匹配的字体名。例：h1{font-family:"Cursiv";}就是匹配名为"Cursiv"的字体。
+
+固定高度容器中的img居中：
+.box {
+	display: table-cell;
+	vertical-align:middle;
+	text-align:center;
+	*display: block;
+	*font-size: 70px;/*约为高度的0.873*/
+	*font-family:Arial;/*防止非utf-8引起的hack失效问题，如gbk编码*/
+	width:80px;
+	height:80px;
+	border:1px solid #eee;
+}
+.box img {vertical-align:middle;}
+
+border-collapse:collapse; 将table表格的边框合并成一个单一边框。设置table的此属性，再设置th，td的border。
+
+浏览器的渲染和操作顺序大致如下：
+HTML解析完毕。
+外部脚本和样式表加载完毕。
+脚本在文档内解析并执行。
+HTML DOM 完全构造起来。
+图片和外部内容加载。
+网页完成加载。
+
+.btn:hover{opacity:0.9;filter:alpha(opacity=90);}
+.trans{-webkit-transition:all 0.3s ease;-moz-transition:all 0.3s ease;-o-transition:all 0.3s ease;-ms-transition:all 0.3s ease;transition:all 0.3s ease;}
+
+设置省略号：
+selector{-o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:200px;}
+
+background:rgba(0,0,0,.7);filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#77000000', endColorstr='#77000000');
+
+强制换行：word-wrap:break-word;word-break:break-all;
+
+<em class="arrow">◆<em>◆</em></em>
+
+宋体　　　simsun　　　　　　　\5B8B\4F53
+黑体　　　simhei　　　　　　　\9ED1\4F53
+楷体　　　kaiTi　　　　　　　　\6977\4F53
+微软雅黑　microsoft yahei　　　\5FAE\8F6F\96C5\9ED1
+font-family:\5FAE\8F6F\96C5\9ED1
+
+
+当一个容器里的文字与img、input、textarea、select、object等元素相连时，对这个容器设置的line-height数值就会失效，同时以上元素的行高可能×2，受影响的浏览器：IE 5.01 / IE 5.5 / IE 6.0
+.line-height {   
+    margin:/* (所属line-height-自身img,input,select,object高度)/2px 0 */;   
+    vertical-align:middle;   
+}
+
+-webkit-user-select:none;-moz-user-select:none;
+
+<object data="swf/caidan.swf" style="outline:none;width:660px;height:75px;">
+	<param name="wmode" value="transparent">
+	<param name="quality" value="high">
+	<param name="src" value="swf/caidan.swf">
+	<param name="type" value="application/x-shockwave-flash">
+</object>
+
+<embed src="" type="application/x-shockwave-flash" wmode="transparent" style="">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" width="550" height="400" id="mymoviename"> 
+	<param name=movie value="myflashmovie.swf"> 
+	<param name=quality value=high> 
+	<param name=bgcolor value=#ffffff> 
+	<embed src="/support/flash/ts/documents/myflashmovie.swf" quality=high bgcolor=#ffffff width="550" height="400" name="mymoviename" align="" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed> 
+</object>
+
+.select_module{position:absolute;top:189px;left:501px;font-size:14px;}
+.select_module a{text-decoration:none;}
+.select_module .option{display:block;width:151px;height:37px;line-height:37px;padding-left:10px;}
+.select_module .option_list{position:absolute;top:36px;left:0;width:159px;height:100px;overflow:hidden;overflow-y:auto;border:1px solid #4C4B49;background:#02236F;}
+.select_module .option_list a{display:block;height:30px;line-height:30px;padding-left:10px;}
+.option_list::-webkit-scrollbar{width:10px;}
+.option_list::-webkit-scrollbar-track{background:transparent;}
+.option_list::-webkit-scrollbar-thumb{background:#2ba7be;}
+.option_list{scrollbar-arrow:hidden;scrollbar-arrow-color:#2ba7be;scrollbar-face-color:#2ba7be;scrollbar-darkshadow-color:#09140f;scrollbar-highlight-color:#09140f;scrollbar-3dlight-color:#09140f;scrollbar-shadow-color:#09140f;scrollbar-track-color:#09140f;}
+
+<div class="select_module">
+	<a href="#" class="option">请选择区服</a>
+	<ul class="option_list" style="display:none;">
+		<li><a href="#">999区</a></li>
+		<li><a href="#">999区</a></li>
+		<li><a href="#">999区</a></li>
+		<li><a href="#">999区</a></li>
+		<li><a href="#">999区</a></li>
+		<li><a href="#">999区</a></li>
+	</ul>
+</div>
+
+@-webkit-keyframes shake{
+	0%,10%,20%{-webkit-transform:rotate(-10deg);}
+	5%,15%,25%{-webkit-transform:rotate(10deg);}
+	30%{-webkit-transform:rotate(0);}
+}
+
+IE默认有margin的元素：
+blockquote,body,dd,dl,fieldset,form,h1-h6,hr,menu,ol,pre,ul
+IE默认有padding的元素：
+button,caption,fieldset,input,legend,menu,ol,td,textarea,th,ul
+
+ie6设置绝对定位元素宽度为100%时，该元素的宽度是相对于向外第一个设置有宽度值的父元素，其他浏览器中该元素的宽度是相对于向外第一个设置为relative、absolute、fixed的父元素
